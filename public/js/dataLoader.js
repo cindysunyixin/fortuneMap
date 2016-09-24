@@ -1,17 +1,13 @@
 function readCSV(csv) {
-	company_names_list = d3.csvParse(csv)
-	company_names_list = company_names_list.map(
-    function(obj) {
-      return {"symbol": obj['Symbol'], "name": obj["Name"]}
-    }
-  );
-	return company_names_list
+  companies = d3.csvParse(csv).map((c) => [
+        obj['Symbol']
+    ]);
+    return companies;
 }
 
-
-function companyPerformance(company_names_list, fn) {
-    var Aladdin = new blk.API();
-    var dataOut = {};
+function companyPerformance(companies, cb) {
+    const Aladdin = new blk.API();
+    let dataOut = {};
     Aladdin.performanceData({
       identifiers: company_names_list.join(',')
     }, function(data) {
@@ -28,11 +24,11 @@ function companyPerformance(company_names_list, fn) {
 }
 
 function securityData() {
-	// query = "blackrock assetType:Stock"
+  // query = "blackrock assetType:Stock"
    //  Aladdin.searchSecurities({
    //      query: query,
    //      responseFields: JSON.stringify(['description', 'securityId', 'ticker'])
    //    }, function(data) {
-  	// 	console.log(data)
+    //  console.log(data)
    //  })
 }
