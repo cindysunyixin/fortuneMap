@@ -1,0 +1,23 @@
+{
+  "name": "fortune-map",
+  "version": "1.0.0",
+  "description": "Visualisation for historic stock prices",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzzcd001/fortuneMap.git"
+  },
+  "author": "HackGT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lzzcd001/fortuneMap/issues"
+  },
+  "homepage": "https://github.com/lzzcd001/fortuneMap#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}

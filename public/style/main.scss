@@ -1,0 +1,16 @@
+#container {
+    width: 1280px;
+    height: 560px;
+    padding: 2em 2em 0;
+    display: flex;
+    justify-content: center;
+    div {
+        height: inherit;
+    }
+}
+#overlay {
+    width: 70%;
+}
+#options {
+    width: 30%;
+}

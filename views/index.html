@@ -4,35 +4,21 @@
 
 <head>
     <meta charset='utf-8'>
+    <link rel='stylesheet' href='style/main.min.css'>
 </head>
 
 <body>
-    <div id='overlay'>
+    <div id='container'>
+        <div id='overlay'></div>
+        <div id='options'></div>
     </div>
 
 
     <script src='http://maps.googleapis.com/maps/api/js?sensor=false'></script>    
     <script src='https://d3js.org/d3.v4.min.js'></script>
     <script src='https://d3js.org/d3-scale-chromatic.v1.min.js'></script>
-    <script>
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('overlay'), {
-                center: { // United States
-                    lat: 37.09024,
-                    lng: -95.712891
-                },
-                zoom: 8
-            });
-        }
-    </script>
-    <script src='fortuneMap.js'></script>
+    <script src='js/overlay.js'></script>
+    <script src='js/fortuneMap.js'></script>
 </body>
-
-<style>
-    #overlay {
-        width: 1024px;
-        height: 768px;
-    }
-</style>
     
 </html>
