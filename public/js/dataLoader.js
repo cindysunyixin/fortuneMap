@@ -16,8 +16,8 @@ function companyPerformance(companies, cb) {
       newData['name'] = resultList.map(
         (obj) => [obj['ticker']]
       )
-      newData['oneYearAnnualized'] = resultList.map(
-        (obj) => [obj['oneYearAnnualized']]
+      newData['value'] = resultList.map(
+        (obj) => [obj['performanceChart'][obj['performanceChart'].length - 1]]
       )
       fn(newData);
     })
