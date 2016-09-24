@@ -1,10 +1,10 @@
 #container {
     width: 1280px;
     height: 560px;
-    padding: 2em 2em 0;
+    padding: 4em 2em 0;
     display: flex;
     justify-content: center;
-    div {
+    > div {
         height: inherit;
     }
 }
@@ -13,4 +13,19 @@
 }
 #options {
     width: 30%;
+}
+.companies {
+    position: absolute;
+    svg {
+        position: inherit;
+        width: 60px;
+        height: 20px;
+        padding-right: 100px;
+        font: 10px sans-serif;
+    }
+    circle {
+        fill: brown;
+        stroke: black;
+        stroke-width: 1.5px;
+    }
 }
