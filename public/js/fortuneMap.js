@@ -1,4 +1,6 @@
 (() => {
+    const Aladdin = new blk.API();
+    
     'use strict';
     const map = initMap('overlay');
     
