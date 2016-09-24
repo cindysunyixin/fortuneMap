@@ -11,7 +11,7 @@
     const colourScale = d3.scaleSequential(d3.interpolateYlGnBu);
     
     // fetch data and render circle svg elements
-    $.get('/url', (res) => {
+    $.get('/data', (res) => {
         d3.json(res, (err, data) => {
             if (err) {
                 console.log(err);
