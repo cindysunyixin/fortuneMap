@@ -1,5 +1,5 @@
 (() => {
     'use strict';
-    initMap('overlay');
-    
+    var map = initMap('overlay');
+    view(map);
 })();
