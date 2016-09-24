@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset='utf-8'>
+</head>
+
+<body>
+    <div id='overlay'>
+    </div>
+
+
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqXx_jNVeP-Jp1T1nXGv3xyTCV6ifJ-C0&callback=initMap' async defer></script>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+    <script src='https://d3js.org/d3-scale-chromatic.v1.min.js'></script>
+    <script>
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('overlay'), {
+                center: { // United States
+                    lat: 37.09024,
+                    lng: -95.712891
+                },
+                zoom: 8
+            });
+        }
+    </script>
+    <script src='fortuneMap.js'></script>
+</body>
+
+</html>
