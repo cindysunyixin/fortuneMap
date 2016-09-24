@@ -9,7 +9,7 @@ module.exports = function (app) {
     html: html,
     scripts: ['https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js'],
     done: function storeId(err, window) {
-      var $ = window.jQuery;
+        var $ = window.jQuery;
 
         // render the index page
         app.get('/', (req, res) => {
@@ -18,7 +18,7 @@ module.exports = function (app) {
 
         app.get('/data', (req, res) => {
 
-            var successCallback = function (data) {
+            var successCallback = function (err, data) {
                 let newData = {};
                 data = data['resultMap']['RETURNS'];
                 data.forEach(d => {
@@ -28,9 +28,10 @@ module.exports = function (app) {
                     newData.push(entry);
                 });
                 res.send(json.stringify(newData));
-                };
+            };
 
             var url = "https://www.blackrock.com/tools/api-tester/hackathon?apiType=performanceData&identifiers=AAPL&useCache=true";
+            
             $.getJSON(url, successCallback);
 
             });
