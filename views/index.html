@@ -6,6 +6,36 @@
     <meta charset='utf-8'>
 </head>
 
+
+<!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/> -->
+<style>
+
+html, body, #map {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.stations, .stations svg {
+  position: absolute;
+}
+
+.stations svg {
+  width: 60px;
+  height: 20px;
+  padding-right: 100px;
+  font: 10px sans-serif;
+}
+
+.stations circle {
+  fill: brown;
+  stroke: black;
+  stroke-width: 1.5px;
+}
+
+</style>
+
 <body>
     <div id='overlay'>
     </div>
@@ -16,16 +46,19 @@
     <script src='https://d3js.org/d3-scale-chromatic.v1.min.js'></script>
     <script>
         function initMap() {
-            map = new google.maps.Map(document.getElementById('overlay'), {
+            map = new google.maps.Map(d3.select("#overlay").node(), {
                 center: { // United States
                     lat: 37.09024,
                     lng: -95.712891
                 },
-                zoom: 8
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
             });
+            return map;
         }
     </script>
-    <script src='fortuneMap.js'></script>
+    <script src="../public/js/visualizer.js"> </script>
+    <script src='../public/js/fortuneMap.js'></script>
 </body>
 
 <style>
