@@ -27,15 +27,18 @@ module.exports = function (app) {
         app.get('/data', (req, res) => {
 
             var successCallback = function (data) {
+                console.log(data)
 
                 let newData = [];
                 data = data['resultMap']['RETURNS'];
+
                 // console.log(data)
                 data.forEach(d => {
                     // console.log(d)
                     let entry = {};
                     entry['name'] = d['ticker'];
                     entry['value'] = d['performanceChart'][d['performanceChart'].length - 1][0];
+
                     newData.push(entry);
                 });
                 console.log("start stringify")
@@ -46,27 +49,46 @@ module.exports = function (app) {
 
 
             var url = "https://www.blackrock.com/tools/hackathon/performance?identifiers=AAPL&useCache=true";
-            
+            url = 'https://www.blackrock.com/tools/api-tester/hackathon?apiType=performanceData&identifiers=MSFT&outputFormat=csv&useCache=true'
             // $.getJSON(url, successCallback);
             $.ajax({
               url: url,
               dataType: 'json',
-              success: successCallback
+              success: successCallback,
               // success: function(result){
               //   console.log(result)
               //   alert("token recieved: " + result.token);
               // },
-              // error: function(request, textStatus, errorThrown) {
-              //   console.log(request)
-              //   console.log(textStatus)
-              //   console.log(errorThrown)
-              //   alert(textStatus);
-              // },
+              error: function(request, textStatus, errorThrown) {
+                console.log(request)
+                console.log(textStatus)
+                console.log(errorThrown)
+                alert(textStatus);
+              },
               // complete: function(request, textStatus) { //for additional info
               //   alert(request.responseText);
               //   alert(textStatus);
               // }
             });
+
+
+            // var companies = [];
+            // fs.readFile('public/csv/SP500.json', function (err, data) { 
+            //     var obj = JSON.parse(data); 
+            //     companies = obj.map((d) => [d.Symbol])
+
+            //     companies = companies.slice(1,5)
+            //     companies = companies.join('%2')
+            //     companies = 'AAPL'
+            //     var url = "https://www.blackrock.com/tools/hackathon/performance?identifiers=" + companies + "&useCache=true";
+
+            //     console.log(url)
+            //     $.ajax({
+            //       url: url,
+            //       dataType: 'json',
+            //       success: successCallback
+            //     });
+            // });    
 
             });
         }

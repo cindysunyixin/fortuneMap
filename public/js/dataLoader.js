@@ -6,6 +6,7 @@ function readCSV(csv) {
 }
 
 function companyPerformance(companies) {
+            
     const Aladdin = new blk.API();
     let dataOut = {};
     Aladdin.performanceData({

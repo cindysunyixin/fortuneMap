@@ -3,7 +3,7 @@ function companyViz(jsonData, map) {
 
     overlay.onAdd = function () {
         var layer = d3.select(this.getPanes().overlayLayer).append("div")
-            .attr("class", "companies");
+            .attr("class", "stations");
 
         overlay.draw = function () {
             var projection = this.getProjection(),
