@@ -1,6 +1,4 @@
 (() => {
-    const Aladdin = new blk.API();
-
     'use strict';
     const map = initMap('overlay');
 
@@ -12,11 +10,12 @@
     // colour scale
     const colourScale = d3.scaleSequential(d3.interpolateYlGnBu);
 
-    // fetch data and render circle svg elements
-    $.get('/data', (res) => {
-        console.log(res);
-        d3.json(res, (err, data) => {
+
+    var successCallback = function (res) {
+
+        d3.json('/data', (err, data) => {
             if (err) {
+            	console.log('error')
                 console.log(err);
             }
             svg.selectAll('g')
@@ -36,8 +35,30 @@
                     .attr('fill', colourScale(price));
             });
 
+            console.log(data)
         });
-    });
+    }
+
+successCallback('/data');
+// console.log("ball")
+
+// console.log($.ajax)
+// $.ajax({
+//   type: "GET",
+//   url: '/data',
+//   dataType: 'json',
+//   success: successCallback,
+//   error:  (jqXHR, textStatus, errorThrown) => {console.log(errorThrown)},
+//   complete: (res) => {console.log("ball")}
+// })
+
+console.log("aha")
+
+    // // fetch data and render circle svg elements
+    // $.get('/data', (res) => { console.log("check")
+
+
+    // });
 
 
 

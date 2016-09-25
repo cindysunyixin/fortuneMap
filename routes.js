@@ -26,8 +26,6 @@ module.exports = function (app) {
 
         app.get('/data', (req, res) => {
 
-
-
             var successCallback = function (data) {
 
                 let newData = [];
@@ -40,7 +38,10 @@ module.exports = function (app) {
                     entry['value'] = d['performanceChart'][d['performanceChart'].length - 1][0];
                     newData.push(entry);
                 });
-                res.send(json.stringify(newData));
+                console.log("start stringify")
+                console.log("start post")                
+                res.json(newData);
+                console.log("finished post")
             };
 
 
