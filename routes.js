@@ -1,6 +1,13 @@
 'use strict';
 
 
+function readCSV(csv) {
+    companies = d3.csvParse(csv).map((c) => [
+        obj['Symbol']
+    ]);
+    return companies.join(',');
+}
+
 module.exports = function (app) {
   var jsdom = require('jsdom');
   var html = '<html><body></body></html>';
@@ -16,12 +23,18 @@ module.exports = function (app) {
             res.sendFile(__dirname + '/views/index.html');
         });
 
+
         app.get('/data', (req, res) => {
 
-            var successCallback = function (err, data) {
-                let newData = {};
+
+
+            var successCallback = function (data) {
+
+                let newData = [];
                 data = data['resultMap']['RETURNS'];
+                // console.log(data)
                 data.forEach(d => {
+                    // console.log(d)
                     let entry = {};
                     entry['name'] = d['ticker'];
                     entry['value'] = d['performanceChart'][d['performanceChart'].length - 1][0];
@@ -30,9 +43,29 @@ module.exports = function (app) {
                 res.send(json.stringify(newData));
             };
 
-            var url = "https://www.blackrock.com/tools/api-tester/hackathon?apiType=performanceData&identifiers=AAPL&useCache=true";
+
+            var url = "https://www.blackrock.com/tools/hackathon/performance?identifiers=AAPL&useCache=true";
             
-            $.getJSON(url, successCallback);
+            // $.getJSON(url, successCallback);
+            $.ajax({
+              url: url,
+              dataType: 'json',
+              success: successCallback
+              // success: function(result){
+              //   console.log(result)
+              //   alert("token recieved: " + result.token);
+              // },
+              // error: function(request, textStatus, errorThrown) {
+              //   console.log(request)
+              //   console.log(textStatus)
+              //   console.log(errorThrown)
+              //   alert(textStatus);
+              // },
+              // complete: function(request, textStatus) { //for additional info
+              //   alert(request.responseText);
+              //   alert(textStatus);
+              // }
+            });
 
             });
         }
